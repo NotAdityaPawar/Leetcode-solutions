@@ -1,11 +1,13 @@
 class Solution:
     def backspaceCompare(self, s: str, t: str) -> bool:
-        def build(S):
+        def help(st):
             ans = []
-            for c in S:
-                if c != '#':
-                    ans.append(c)
+            for i in st:
+                if i!='#':
+                    ans.append(i)
                 elif ans:
                     ans.pop()
+                    
             return "".join(ans)
-        return build(s) == build(t)
+        
+        return help(s)== help(t)
