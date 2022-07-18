@@ -11,15 +11,22 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode*root,vector<int> &ans){
-        if (root==NULL) return;
-        if (root->left) inorder(root->left,ans);
-        ans.push_back(root->val);
-        if(root->right) inorder(root->right,ans);
-    }
     int minDiffInBST(TreeNode* root) {
         vector<int> ans;
-        inorder(root,ans);
+        stack<TreeNode*> s;
+        
+        TreeNode* curr = root;
+        
+        while (!s.empty() or curr!=NULL){
+            while (curr){
+                s.push(curr);
+                curr = curr ->left;
+            }
+            curr = s.top();
+            s.pop();
+            ans.push_back(curr->val);
+            curr = curr->right;
+        }
         for (auto i:ans) cout<<i;
         
         int diff = INT_MAX;
