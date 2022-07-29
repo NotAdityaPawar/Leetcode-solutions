@@ -9,12 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-#include <bits/stdc++.h>
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if (root==NULL) return 0;
-        return max(maxDepth(root->left),maxDepth(root->right)) + 1;
+        if (root==0) return 0;
+        int lh = maxDepth(root->left);
+        int rh = maxDepth(root->right);
+        
+        return 1 +max(lh,rh);
     }
 };
