@@ -19,12 +19,9 @@ public:
     }
     bool isValidBST(TreeNode* root) {
         vector<int> ans;
-        
-        
         inorder(root,ans);
-        
         for (int i=0;i<ans.size()-1;i++){
-            if (ans[i+1]<=ans[i]) return false;
+            if (ans[i]>=ans[i+1]) return false;
         }
         return true;
     }
