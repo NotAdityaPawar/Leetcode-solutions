@@ -1,23 +1,20 @@
 class Solution {
 public:
-    string longesUtil(string a,string b){
-        string ans = "";
-        int len = min(a.size(),b.size());
+    string longestCommonPrefix(vector<string>& strs) {
+        sort(strs.begin(),strs.end());
         
-        for (int i=0;i<len;i++){
+        string ans = "";
+        string a = strs[0];
+        string b = strs[strs.size()-1];
+        
+        int s = max(a.size(),b.size());
+        
+        for (int i=0;i<s;i++){
             if (a[i]!=b[i]){
                 break;
             }
             ans += a[i];
         }
         return ans;
-    }
-    string longestCommonPrefix(vector<string>& strs) {
-        string prefix = strs[0];
-        for (int i=1;i<strs.size();i++){
-            prefix = longesUtil(prefix,strs[i]);
-        }
-        
-        return prefix;
     }
 };
