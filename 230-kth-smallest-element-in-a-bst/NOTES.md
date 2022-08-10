@@ -1,3 +1,7 @@
+​
+Need to solve the Follow up
+​
+​
 Inorder traversal returns the sorted value in BST.
 ​
 ```
@@ -16,6 +20,4 @@ inorder(root->right,ans);
 }
 ```
 ​
-​
-Need to solve the Follow up
 ​
