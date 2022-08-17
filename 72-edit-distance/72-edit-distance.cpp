@@ -13,9 +13,9 @@ public:
         if (a[m-1]==b[n-1]){
             return dp[m][n] = helper(a,b,m-1,n-1,dp);
         }
-        else{
-            return dp[m][n] =  1 + min(helper(a,b,m-1,n,dp),min(helper(a,b,m-1,n-1,dp),helper(a,b,m,n-1,dp)));
-        }
+        
+        
+        return dp[m][n] = 1 + min({helper(a,b,m-1,n,dp),helper(a,b,m-1,n-1,dp),helper(a,b,m,n-1,dp)});
     }
     int minDistance(string word1, string word2) {
         int m = word1.size();
