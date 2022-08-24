@@ -1,0 +1,1 @@
+fmod compare the moduls between the two numbers
