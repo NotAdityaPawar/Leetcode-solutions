@@ -11,19 +11,21 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int> &ans){
+    void recur(TreeNode* root,vector<int> &in){
         if (root==NULL) return;
-        if (root->left) inorder(root->left,ans);
-        ans.push_back(root->val);
-        if (root->right) inorder(root->right,ans);
+        if (root->left) recur(root->left,in);
+        in.push_back(root->val);
+        if (root->right) recur(root->right,in);
     }
     bool findTarget(TreeNode* root, int k) {
-        vector<int> ans;
-        inorder(root,ans);
-        
-        for (int i=0;i<ans.size();i++){
-            for (int j = i+1;j<ans.size();j++){
-                if (ans[i] + ans[j]==k) return true;
+        vector<int> inorder;
+        recur(root,inorder);
+        int n = inorder.size();
+        for (int i = 0;i<n;i++){
+            for (int j = i+1;j<n;j++){
+                if (inorder[i] + inorder[j]==k){
+                    return true;
+                }
             }
         }
         return false;
