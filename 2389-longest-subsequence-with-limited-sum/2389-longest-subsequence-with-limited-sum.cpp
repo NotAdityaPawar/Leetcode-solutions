@@ -1,20 +1,18 @@
 class Solution {
 public:
     vector<int> answerQueries(vector<int>& nums, vector<int>& queries) {
-        vector<int> ans;
-        sort(nums.begin(),nums.end());
         int n = nums.size();
-        for (int q: queries){
-            int cnt = 0;
-            for (int n: nums){
-                if (q>=n){
-                    q -= n;
-                    cnt++;
-                }
-                else break;
-                
-            }
-            ans.push_back(cnt);
+        vector<int> pre(n,0);
+        
+        sort(nums.begin(),nums.end());
+        pre[0] = nums[0];
+        for (int i = 1;i<n;i++){
+            nums[i] += nums[i-1];
+        }
+        vector<int> ans;
+        for (auto q: queries){
+            int i = upper_bound(nums.begin(),nums.end(),q) - nums.begin();
+            ans.push_back(i);
         }
         return ans;
     }
