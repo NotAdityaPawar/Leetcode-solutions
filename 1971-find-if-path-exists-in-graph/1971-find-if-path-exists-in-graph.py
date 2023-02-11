@@ -1,28 +1,30 @@
 class Solution:
-    def ispath(self,src,des,lst):
-        pass
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        lst = {i:[] for i in range(n)}
+        graph = {i:[] for i in range(n)}
         
-        for a,b in edges:
-            lst[a].append(b)
-            lst[b].append(a)
-            
-            
-        seen = [False]*n
+        print(graph)
         
-        def dfs(node):
+        for u,v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
+            
+        queue = deque()
+        
+        visited = set()
+        
+        queue.append(source)
+        
+        while queue:
+            node = queue.popleft()
             if node==destination:
                 return True
             
-            if not seen[node]:
-                seen[node] = True
-                for next_node in lst[node]:
-                    if dfs(next_node):
-                        return True
-
-            return False
-        return dfs(source)
-            
+            for n in graph[node]:
+                if n not in visited:
+                    visited.add(n)
+                    queue.append(n)
+                    
+                    
+                    
         
-        
+        return False
