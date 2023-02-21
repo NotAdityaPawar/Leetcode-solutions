@@ -1,7 +1,10 @@
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        count = Counter(nums)
-        
-        for a,b in count.items():
-            if b==1:
-                return a
+        left, right = 0, len(nums)-1
+        while left < right:
+            mid = int((left + right)/2)
+            if (mid % 2 == 1 and nums[mid - 1] == nums[mid]) or (mid%2 == 0 and nums[mid] == nums[mid + 1]):
+                left = mid + 1
+            else:
+                right = mid
+        return nums[left]
