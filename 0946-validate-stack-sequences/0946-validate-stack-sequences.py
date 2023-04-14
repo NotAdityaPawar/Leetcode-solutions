@@ -1,11 +1,11 @@
-class Solution(object):
-    def validateStackSequences(self, pushed, popped):
-        j = 0
+class Solution:
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         stack = []
-        for x in pushed:
-            stack.append(x)
-            while stack and j < len(popped) and stack[-1] == popped[j]:
+        i = 0
+        for num in pushed:
+            stack.append(num)
+            while i<len(popped) and stack and popped[i]==stack[-1]:
                 stack.pop()
-                j += 1
-
-        return j == len(popped)
+                i += 1
+                
+        return len(stack)==0
