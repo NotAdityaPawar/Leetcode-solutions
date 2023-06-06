@@ -1,12 +1,9 @@
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
+        string ans = "";
         int i = 0;
         int j = 0;
-        
-        
-        string ans = "";
-        
         int cnt = 0;
         while (i<word1.size() and j<word2.size()){
             if (cnt%2==0){
@@ -17,13 +14,13 @@ public:
                 ans += word2[j];
                 j++;
             }
-            cnt ++;
+            cnt++;
         }
         while (i<word1.size()){
             ans += word1[i];
             i++;
         }
-        while (j<word2.size()){
+        while (j<word2.size()) {
             ans += word2[j];
             j++;
         }
