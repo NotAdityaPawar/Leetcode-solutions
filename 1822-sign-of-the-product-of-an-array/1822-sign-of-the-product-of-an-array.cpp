@@ -1,17 +1,13 @@
 class Solution {
 public:
     int arraySign(vector<int>& nums) {
-        long long pro = 1;
-        
+        long long mul = 1;
         for (auto i: nums){
-            if (i==0) return 0;
-            else if (i>1 and pro==1) pro = 1;
-            else if(i>1 and pro==-1) pro = -1;
-            else if (i<1 and pro==1) pro = -1;
-            else pro = 1;
+            mul *= i;
+            if (mul==0) mul = 0;
+            else if (mul<0) mul = -1;
+            else mul = 1;
         }
-        if (pro==0) return 0;
-        if (pro==1) return 1;
-        return -1;
+        return mul;
     }
 };
